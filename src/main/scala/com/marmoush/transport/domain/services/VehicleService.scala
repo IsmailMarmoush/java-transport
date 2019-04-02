@@ -6,6 +6,7 @@ import com.marmoush.transport.domain.repo.{DelaysRepo, LinesRepo, StopsRepo, Tim
 import com.marmoush.transport.domain.value.{Line, Stop}
 
 case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRepo: StopsRepo, timesRepo: TimesRepo) {
+
   def isVehicleAvailable(time: LocalTime, x: Int, y: Int): Boolean = {
     false
   }
@@ -14,7 +15,6 @@ case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRep
     None
   }
 
-  def isLineDelayed(line: Line): Boolean = {
-    false
-  }
+  def isLineDelayed(line: Line): Boolean = delaysRepo.isDelayed(line)
+
 }
