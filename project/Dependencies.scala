@@ -16,9 +16,11 @@ object Dependencies {
     "com.typesafe"               % "config"                % typesafeConfigVersion,
     "ch.qos.logback"             % "logback-classic"       % logbackVersion,
     "com.typesafe.scala-logging" %% "scala-logging"        % scalaLoggingVersion,
+    "com.github.tototoshi"       %% "scala-csv"            % "1.3.5",
     "org.typelevel"              %% "cats-core"            % catsVersion,
     "com.typesafe.akka"          %% "akka-http"            % akkaHttpVersion,
     "com.typesafe.akka"          %% "akka-http-spray-json" % akkaHttpVersion,
+    "com.typesafe.akka"          %% "akka-stream"          % akkaVersion,
     "com.typesafe.akka"          %% "akka-testkit"         % akkaVersion
   )
 
