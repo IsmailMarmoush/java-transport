@@ -13,4 +13,8 @@ class VehicleServiceTest extends FlatSpec with Matchers {
     isLineDelayed(AnonymousLine("U8")) should be(false)
   }
 
+  // 1,3,10:08:00
+  "Line200" should "be at stop 2,9 at time (10:08:00)" in {
+
+  }
 }
