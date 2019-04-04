@@ -30,7 +30,8 @@ object MySettings {
     "-Ywarn-numeric-widen", //warns if a numeric widening happens
     "-Ywarn-value-discard", //warns if we discarded a value. This is helpful for newcomers
     "-Xfuture", // we enable futures
-    "-Ywarn-unused-import" // Warns for unused imports
+    "-Ywarn-unused-import", // Warns for unused imports
+    "-Ypartial-unification"
     //"-Xfatal-warnings",
   )
 }

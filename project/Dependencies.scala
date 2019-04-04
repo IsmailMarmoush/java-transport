@@ -11,17 +11,17 @@ object Dependencies {
   lazy val catsVersion     = "1.6.0"
   lazy val akkaVersion     = "2.5.21"
   lazy val akkaHttpVersion = "10.1.8"
+  lazy val http4sVersion   = "0.18.23"
 
   val compileDeps = Seq(
-    "com.typesafe"               % "config"                % typesafeConfigVersion,
-    "ch.qos.logback"             % "logback-classic"       % logbackVersion,
-    "com.typesafe.scala-logging" %% "scala-logging"        % scalaLoggingVersion,
-    "com.github.tototoshi"       %% "scala-csv"            % "1.3.5",
-    "org.typelevel"              %% "cats-core"            % catsVersion,
-    "com.typesafe.akka"          %% "akka-http"            % akkaHttpVersion,
-    "com.typesafe.akka"          %% "akka-http-spray-json" % akkaHttpVersion,
-    "com.typesafe.akka"          %% "akka-stream"          % akkaVersion,
-    "com.typesafe.akka"          %% "akka-testkit"         % akkaVersion
+    "com.typesafe"               % "config"               % typesafeConfigVersion,
+    "ch.qos.logback"             % "logback-classic"      % logbackVersion,
+    "com.typesafe.scala-logging" %% "scala-logging"       % scalaLoggingVersion,
+    "com.github.tototoshi"       %% "scala-csv"           % "1.3.5",
+    "org.typelevel"              %% "cats-core"           % catsVersion,
+    "org.http4s"                 %% "http4s-dsl"          % http4sVersion,
+    "org.http4s"                 %% "http4s-blaze-server" % http4sVersion,
+    "org.http4s"                 %% "http4s-blaze-client" % http4sVersion
   )
 
   val testDeps = Seq(
