@@ -1,5 +1,4 @@
 package com.marmoush.transport.domain.entities
+import com.marmoush.transport.domain.value.Stop
 
-class StopEntity {
-
-}
+case class StopEntity(id:Int, stop:Stop)
