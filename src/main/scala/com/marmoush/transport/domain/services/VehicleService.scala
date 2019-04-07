@@ -12,6 +12,8 @@ case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRep
   }
 
   def nextVehicle(stop: Stop): Option[(Line, LocalTime)] = {
+    val sId = stopsRepo.getStopId(stop.x, stop.y)
+
     None
   }
 

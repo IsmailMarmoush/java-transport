@@ -10,9 +10,9 @@ import scala.io.Source
 case class StopsCSVRepo(csvFile: Source) extends StopsRepo {
   val reader = CSVReader.open(csvFile)
 
-  override def stopId(x: Int, y: Int): Option[Int] =
+  override def getStopId(x: Int, y: Int): Option[Int] =
     reader.toStream.find { case (id :: x1 :: y1) => x == x1 && y == y1 }.map(_.head.toInt)
-  override def stop(id: Int): Option[StopEntity] = reader.toStream.find { case (idx :: x :: y) => idx == id }.map {
+  override def getStopEntity(id: Int): Option[StopEntity] = reader.toStream.find { case (idx :: x :: y) => idx == id }.map {
     case (idx :: x :: y :: nil) => new StopEntity(idx.toInt, new Stop(x.toInt, y.toInt))
   }
 }
