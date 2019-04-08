@@ -11,11 +11,11 @@ case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRep
     false
   }
 
-  def nextVehicle(stop: Stop): Option[(Line, LocalTime)] = {
-    val sId = stopsRepo.getStopId(stop.x, stop.y)
-
-    None
-  }
+  def nextVehicle(stop: Stop,time:LocalTime): Option[Line] =
+    stopsRepo
+      .getStopId(stop.x, stop.y)
+      .map(id => timesRepo.getNextLine(id, time))
+      .flatMap(l => linesRepo.getLine(l))
 
   def isLineDelayed(line: Line): Boolean = delaysRepo.isDelayed(line)
 

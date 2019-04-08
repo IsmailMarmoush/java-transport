@@ -1,7 +1,7 @@
 package com.marmoush.transport.domain.value
 
 
-sealed abstract class Line(val name: String)
+sealed abstract  Line(val name: String)
 
 case class AnonymousLine(override val name: String) extends Line(name)
 
