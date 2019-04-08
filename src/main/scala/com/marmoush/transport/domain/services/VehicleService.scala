@@ -11,11 +11,18 @@ case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRep
     false
   }
 
-  def nextVehicle(stop: Stop,time:LocalTime): Option[Line] =
+  def nextVehicles(stop: Stop, time: LocalTime): List[(Line, LocalTime)] =
     stopsRepo
       .getStopId(stop.x, stop.y)
-      .map(id => timesRepo.getNextLine(id, time))
-      .flatMap(l => linesRepo.getLine(l))
+      .map(id => timesRepo.getNextLines(id, time))
+      .getOrElse(List.empty)
+      .map {
+        case (lineId, time) => (linesRepo.getLine(lineId), time)
+      }
+      .flatMap {
+        case (Some(x), t) => Some((x, t))
+        case (None, _)    => None
+      }
 
   def isLineDelayed(line: Line): Boolean = delaysRepo.isDelayed(line)
 

@@ -7,12 +7,21 @@ import com.marmoush.transport.domain.value.Stop
 
 import scala.io.Source
 
-case class StopsCSVRepo(csvFile: Source) extends StopsRepo {
-  val reader = CSVReader.open(csvFile)
+case class StopsCSVRepo(csvFile: String) extends StopsRepo {
 
-  override def getStopId(x: Int, y: Int): Option[Int] =
-    reader.toStream.find { case (id :: x1 :: y1) => x == x1 && y == y1 }.map(_.head.toInt)
-  override def getStopEntity(id: Int): Option[StopEntity] = reader.toStream.find { case (idx :: x :: y) => idx == id }.map {
-    case (idx :: x :: y :: nil) => new StopEntity(idx.toInt, new Stop(x.toInt, y.toInt))
+  override def getStopId(x: Int, y: Int): Option[Int] = {
+    val reader = CSVReader.open(Source.fromResource(csvFile))
+    val result =
+      reader.toStream.drop(1).find { case (id :: x1 :: y1 :: nil) => x == x1.toInt && y == y1.toInt }.map(_.head.toInt)
+    reader.close()
+    result
+  }
+  override def getStopEntity(id: Int): Option[StopEntity] = {
+    val reader = CSVReader.open(csvFile)
+    val result = reader.toStream.drop(1).find { case (id :: _) => id == id.toInt }.map {
+      case (idx :: x :: y :: _) => StopEntity(idx.toInt, Stop(x.toInt, y.toInt))
+    }
+    reader.close()
+    result
   }
 }

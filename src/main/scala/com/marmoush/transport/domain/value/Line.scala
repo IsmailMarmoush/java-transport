@@ -1,12 +1,7 @@
 package com.marmoush.transport.domain.value
 
+sealed case class Line(name: String)
 
-sealed abstract  Line(val name: String)
-
-case class AnonymousLine(override val name: String) extends Line(name)
-
-case object LineM4 extends Line("M4")
-
-case object Line200 extends Line("200")
-
-case object LineS75 extends Line("S75")
+object LineM4  extends Line("M4")
+object Line200 extends Line("200")
+object LineS75 extends Line("S75")

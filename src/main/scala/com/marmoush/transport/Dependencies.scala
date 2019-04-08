@@ -7,12 +7,11 @@ import com.marmoush.transport.domain.services.VehicleService
 import scala.io.Source
 
 object Dependencies {
-  private val delaysRepo: DelaysRepo = DelaysCSVRepo(Source.fromResource("data/delays.csv"))
-  private val linesRepo: LinesRepo = LinesCSVRepo(Source.fromResource("data/lines.csv"))
-  private val stopsRepo: StopsRepo = StopsCSVRepo(Source.fromResource("data/stops.csv"))
-  private val timesRepo: TimesRepo = TimesCSVRepo(Source.fromResource("data/times.csv"))
+  val delaysRepo: DelaysRepo = DelaysCSVRepo("data/delays.csv")
+  val linesRepo: LinesRepo   = LinesCSVRepo("data/lines.csv")
+  val stopsRepo: StopsRepo   = StopsCSVRepo("data/stops.csv")
+  val timesRepo: TimesRepo   = TimesCSVRepo("data/times.csv")
 
   val vehicleService = VehicleService(delaysRepo, linesRepo, stopsRepo, timesRepo)
-
 
 }
