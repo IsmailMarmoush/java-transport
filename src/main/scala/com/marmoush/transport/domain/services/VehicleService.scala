@@ -6,10 +6,11 @@ import com.marmoush.transport.domain.repo.{DelaysRepo, LinesRepo, StopsRepo, Tim
 import com.marmoush.transport.domain.value.{Line, Stop}
 
 case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRepo: StopsRepo, timesRepo: TimesRepo) {
+// Find a vehicle for a given time and X & Y coordinates ??
 
-  def isVehicleAvailable(time: LocalTime, x: Int, y: Int): Boolean = {
-    false
-  }
+//  def getVehicle(time: LocalTime, x: Int, y: Int): Option[Line] = {
+//    false
+//  }
 
   def nextVehicles(stop: Stop, time: LocalTime): List[(Line, LocalTime)] =
     stopsRepo
