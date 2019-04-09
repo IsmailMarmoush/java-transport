@@ -12,11 +12,9 @@ case class VehicleService(delaysRepo: DelaysRepo, linesRepo: LinesRepo, stopsRep
 //    false
 //  }
 
-  def nextVehicles(stop: Stop, time: LocalTime): List[(Line, LocalTime)] =
-    stopsRepo
-      .getStopId(stop.x, stop.y)
-      .map(id => timesRepo.getNextLines(id, time))
-      .getOrElse(List.empty)
+  def nextVehicles(stopId: Int, time: LocalTime): List[(Line, LocalTime)] =
+    timesRepo
+      .getNextLines(stopId, time)
       .map {
         case (lineId, time) => (linesRepo.getLine(lineId), time)
       }

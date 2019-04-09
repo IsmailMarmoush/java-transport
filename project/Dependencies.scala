@@ -12,6 +12,7 @@ object Dependencies {
   lazy val akkaVersion     = "2.5.21"
   lazy val akkaHttpVersion = "10.1.8"
   lazy val http4sVersion   = "0.18.23"
+  val circeVersion         = "0.10.0"
 
   val compileDeps = Seq(
     "com.typesafe"               % "config"               % typesafeConfigVersion,
@@ -21,7 +22,10 @@ object Dependencies {
     "org.typelevel"              %% "cats-core"           % catsVersion,
     "org.http4s"                 %% "http4s-dsl"          % http4sVersion,
     "org.http4s"                 %% "http4s-blaze-server" % http4sVersion,
-    "org.http4s"                 %% "http4s-blaze-client" % http4sVersion
+    "org.http4s"                 %% "http4s-blaze-client" % http4sVersion,
+    "io.circe"                   %% "circe-core"          % circeVersion,
+    "io.circe"                   %% "circe-generic"       % circeVersion,
+    "io.circe"                   %% "circe-parser"        % circeVersion
   )
 
   val testDeps = Seq(

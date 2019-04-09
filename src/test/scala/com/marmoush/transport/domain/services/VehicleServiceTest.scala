@@ -21,7 +21,9 @@ class VehicleServiceTest extends FlatSpec with Matchers {
 
   // 1,3,10:08:00
   "Line200" should "be at stop 2,9 at time (10:08:00)" in {
-    nextVehicles(Stop(2, 9), LocalTime.of(10, 5, 0)) should be(
+    nextVehicles(3, LocalTime.of(10, 5, 0)) should be(
+      List((LineM4, LocalTime.of(10, 7, 0)), (Line200, LocalTime.of(10, 8)), (LineS75, LocalTime.of(10, 8))))
+    nextVehicles(2, LocalTime.of(10, 5, 0)) should not be(
       List((LineM4, LocalTime.of(10, 7, 0)), (Line200, LocalTime.of(10, 8)), (LineS75, LocalTime.of(10, 8))))
   }
 }
